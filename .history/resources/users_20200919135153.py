@@ -127,7 +127,7 @@ class UserLogin(Resource):
         if user and cls.valid_password(data['password'], user.password):
             token_de_acesso = create_access_token(identity=user.id)
             return { 'access_token': token_de_acesso }, 200
-        return { 'message': 'The user name or password is incorrect' }, 401
+        return { 'message': 'the user name or password is incorrect' }, 401
     
     @classmethod
     def valid_password(cls, password_typed, hash_password):
