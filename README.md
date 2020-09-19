@@ -31,7 +31,7 @@ Logo após o download das dependências use o comando:
 
 >$ python app.py
 
-Se tudo correu de forma correta a aplicação estara rodando:
+Se tudo correu de forma correta a aplicação estará rodando:
 
 >Running on http://127.0.0.1:5000/
 
@@ -72,6 +72,26 @@ __Usuario já existe__:
 }
 ````
 
+<h3>Geração de token</h3>
+
+>POST http://127.0.0.1:5000/users/token
+
+__Enviar JSON__
+````
+{
+    "login": "tesla@hotmail.com",
+    "password": "eletromagnetismo"
+}
+````
+
+__Retorna__:
+
+````
+{
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDA1NDE2MDEsIm5iZiI6MTYwMDU0MTYwMSwianRpIjoiY2IzNGJmNjQtNmM5ZS00MTg4LWJlMjUtYzgwNjhjNmI5NTlmIiwiZXhwIjoxNjAwNTQyNTAxLCJpZGVudGl0eSI6MSwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIn0.g5lNkaKN5KQ_4-hPZRb9peWlENUygZt3Z-rKLyWF94g"
+}
+````
+
 <h3>Listagem de usuarios</h3>
 
 >GET http://127.0.0.1:5000/users
@@ -98,13 +118,24 @@ Retorna um JSON com todos os registros de usuarios
 
 <h4>Parâmetro(opcionais)</h4>
 
->GET http://127.0.0.1:5000/users?city=curitiba&limit=100&offset=0
+Filtragem por cidade:
+
+>GET http://127.0.0.1:5000/users?city=curitiba
+
+Quantidade:
+
+>GET http://127.0.0.1:5000/users?&limit=100&offset=0
 
 Retorna um JSON filtrado pelos parâmetros
 
-<h3>Pesquisar por "id" usuário<h3>
+<h3>Pesquisar por "id" usuário</h3>
+
+Para executar esse método precisaremos da token que foi gerada, apos copiar a token entre na aba do POSTMAN "Headers" na coluna de "KEY" adicione a palavra
+
 
 >GET http://127.0.0.1:5000/users/{id}
+
+
 
 
 
