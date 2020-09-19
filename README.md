@@ -39,7 +39,74 @@ Se tudo correu de forma correta a aplicação estara rodando:
 Para testar os métodos POST e PUT, use o POSTMAN (link para download: https://www.postman.com/downloads/).
 
 __A API aceita e retorna apenas o formato JSON__
-<h3>Listagem de usuarios<h3>
+
+
+<h3>Adicionar usuários</h3>
+
+>POST http://127.0.0.1:5000/users/register
+
+__Enviar JSON__:
+
+````
+{
+    "login": "tesla@hotmail.com",
+    "password": "eletromagnetismo",
+    "city": "São paulo"
+}
+````
+Retorno:
+
+__Sucesso__:
+
+````
+{
+    "message": "User cread successfully"
+}
+````
+
+__Usuario já existe__:
+
+````
+{
+    "massage": "The login tesla@hotmail.com alredy exists."
+}
+````
+
+<h3>Listagem de usuarios</h3>
+
+>GET http://127.0.0.1:5000/users
+
+Retorna um JSON com todos os registros de usuarios
+
+```
+{
+    "users": [
+        {
+            "id": 1,
+            "login": "einstein@hotmail.com",
+            "city": "Curitiba"
+        },
+        {
+            "id": 2,
+            "login": "newton@gmail.com",
+            "city": "Curitiba"
+        }
+     ]
+}
+
+```
+
+<h4>Parâmetro(opcionais)</h4>
+
+>GET http://127.0.0.1:5000/users?city=curitiba&limit=100&offset=0
+
+Retorna um JSON filtrado pelos parâmetros
+
+<h3>Pesquisar por "id" usuário<h3>
+
+>GET http://127.0.0.1:5000/users/{id}
+
+
 
 
 
