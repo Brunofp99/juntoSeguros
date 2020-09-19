@@ -1,3 +1,3 @@
 from flask_sqlalchemy import SQLAlchemy
 
-banco = SQLAlchemy()
+database = SQLAlchemy()
