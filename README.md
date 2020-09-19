@@ -54,7 +54,6 @@ __Enviar JSON__:
     "city": "São paulo"
 }
 ````
-Retorno:
 
 __Sucesso__:
 
@@ -84,11 +83,19 @@ __Enviar JSON__
 }
 ````
 
-__Retorna__:
+__Sucesso__:
 
 ````
 {
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDA1NDE2MDEsIm5iZiI6MTYwMDU0MTYwMSwianRpIjoiY2IzNGJmNjQtNmM5ZS00MTg4LWJlMjUtYzgwNjhjNmI5NTlmIiwiZXhwIjoxNjAwNTQyNTAxLCJpZGVudGl0eSI6MSwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIn0.g5lNkaKN5KQ_4-hPZRb9peWlENUygZt3Z-rKLyWF94g"
+}
+````
+
+__Erro__:
+
+````
+{
+    "message": "The user name or password is incorrect"
 }
 ````
 
@@ -110,6 +117,11 @@ Retorna um JSON com todos os registros de usuarios
             "id": 2,
             "login": "newton@gmail.com",
             "city": "Curitiba"
+        },
+        {
+            "id": 3
+            "login": "tesla@hotmail.com",
+            "city": "São paulo"
         }
      ]
 }
@@ -122,22 +134,131 @@ Filtragem por cidade:
 
 >GET http://127.0.0.1:5000/users?city=curitiba
 
-Quantidade:
+Filtragem por Quantidade:
 
->GET http://127.0.0.1:5000/users?&limit=100&offset=0
+>GET http://127.0.0.1:5000/users?limit=100&offset=0
 
-Retorna um JSON filtrado pelos parâmetros
+Filtragem por cidade e quantidade:
+
+>GET http://127.0.0.1:5000/users?city=curitiba&limit=100&offset=0
+
+Retorna um JSON com todos os usuários filtrados pelos parâmetros
 
 <h3>Pesquisar por "id" usuário</h3>
 
-Para executar esse método precisaremos da token que foi gerada, apos copiar a token entre na aba do POSTMAN "Headers" na coluna de "KEY" adicione a palavra
+Para executar esse método precisaremos da token que foi gerada, após copiar a token entre na aba do POSTMAN "Headers" na coluna de "KEY" adicione a palavra
+"Authorization" e na coluna "VALUE" adicione "Bearer" seguido pela token
+
+__Exemplo__:
+
+|     KEY        |          VALUE             |
+|----------------|----------------------------|
+|  Authorization | Bearer eyJ0eXAiOiJKV1Qi... |
 
 
->GET http://127.0.0.1:5000/users/{id}
+
+>GET http://127.0.0.1:5000/users/{:id}
 
 
+Retorna um JSON com "id", "login" e "city":
+
+````
+{
+    "id": 3,
+    "login": "tesla@hotmail.com",
+    "city": "São paulo"
+}
+````
 
 
+<h3>Alterar dados</h3>
+
+Para executar esse método precisaremos da token que foi gerada, após copiar a token entre na aba do POSTMAN "Headers" na coluna de "KEY" adicione a palavra
+"Authorization" e na coluna "VALUE" adicione "Bearer" seguido pela token
+
+__Exemplo__:
+
+|     KEY        |          VALUE             |
+|----------------|----------------------------|
+|  Authorization | Bearer eyJ0eXAiOiJKV1Qi... |
 
 
+Os dados que podem ser alterados são: "login", "password", "city"
+
+>PUT http://127.0.0.1:5000/users/alter/{:id}
+
+
+__Enviar JSON (Todos os index são opcionais)__:
+
+````
+{
+    "login": "nikolatesla@hotmail.com",
+    "password": "correntealternada"
+}
+````
+
+Retorna um JSON com as novas informações:
+
+__Sucesso__:
+
+````
+{
+    "id": 3
+    "login": "nikolatesla@hotmail.com",
+    "city": "São paulo"
+}
+````
+
+__Erro__:
+
+````
+{
+    "message": "this user id :id dont have a register"
+}
+````
+
+<h3>Deletar Usuário</h3>
+
+Para executar esse método precisaremos da token que foi gerada, após copiar a token entre na aba do POSTMAN "Headers" na coluna de "KEY" adicione a palavra
+"Authorization" e na coluna "VALUE" adicione "Bearer" seguido pela token
+
+__Exemplo__:
+
+|     KEY        |          VALUE             |
+|----------------|----------------------------|
+|  Authorization | Bearer eyJ0eXAiOiJKV1Qi... |
+
+
+>DELETE http://127.0.0.1:5000/users/{id}
+
+Retorna um JSON com uma menssagem:
+
+__Sucesso__:
+
+````
+{
+    "message": "user deleted"
+}
+````
+
+__Erro id não existe__:
+
+````
+{
+    "message": "The user :id does not exist"
+}
+````
+
+__Erro desconhecido__:
+
+````
+{
+    "message": "An internal error ocurred trying to delete user"
+}
+````
+
+<h3>Seguranças</h3>
+
+* Usuários registrados tem obrigatoriamente que gerar token para executar ação de POST, PUT, DELETE.
+* As senhas são salvas criptografadas no bancos, ou seja, apenas o usuário tem acesso a sua versão original.
 
