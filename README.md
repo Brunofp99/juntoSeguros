@@ -3,7 +3,7 @@ Essa documentação tem como objetivo orientar e demonstrar como a API funciona
 <h2>Ambiente virtual</h2>
 
 Partindo do pressuposto de que você ja tem o Python3.7+ instalado na sua maquina (caso não tenha click no link: https://www.python.org/downloads/) e o repositorio clonado,
-entre na pasta e inicie o ambiente virtual que ja vem inatalado com o Python:
+entre na pasta pelo seu editor de texto ou IDE e inicie o ambiente virtual que ja vem inatalado com o Python:
 
 >$ python -m venv ambvir
 
