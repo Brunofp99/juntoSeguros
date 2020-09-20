@@ -15,6 +15,12 @@ Caso esteja usando p PowerShell use:
 
 >$ ./bin/Scripts/Activate.ps1
 
+Se o terminal devolver um erro:
+
+>./bin/Scripts/Activate.bat : O termo './bin/Scripts/Activate.bat' não é reconhecido como nome de cmdlet, função, arquivo de script ou programa operável.
+
+Continue sem executar o comando, este erro é aplicado quando o ambiente já esta ativo.
+
 Caso seu PowerShell esteja com os scripts desabilitados, consulte a documentação para saber como proceder
 
 <h2>Baixando dependências</h2>
