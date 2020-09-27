@@ -26,7 +26,7 @@ class Users(Resource):
         cursor = connection.cursor()
 
         data = path_params.parse_args()
-        valid_data = {key:data[key] for key in data if data[key] is not None}
+        valid_data = { key:data[key] for key in data if data[key] is not None }
         params = normalize_path_params(**valid_data)
 
         if params.get('city'):
