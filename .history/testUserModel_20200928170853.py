@@ -33,9 +33,15 @@ class TesteUserModel(TestCase):
 
     def test_update_user_city(self):
         self.user_model.update_user_city( self.new_city )
-
+    
     def test_find_user(self):
         assert self.user_model.find_user(1)
+    
+    # def test_find_by_login(self):
+    #     assert self.user_model.find_by_login(self.new_login)
+    
+    # def test_delete_user(self):
+    #     self.user_model.delete_user()
 
 if __name__ == '__main__':
     main()

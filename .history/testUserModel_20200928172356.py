@@ -33,7 +33,7 @@ class TesteUserModel(TestCase):
 
     def test_update_user_city(self):
         self.user_model.update_user_city( self.new_city )
-
+    
     def test_find_user(self):
         assert self.user_model.find_user(1)
 
